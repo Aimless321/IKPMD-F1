@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "840692462545",
+    "firebase_url": "https://ikpmd-fd10b.firebaseio.com",
+    "project_id": "ikpmd-fd10b",
+    "storage_bucket": "ikpmd-fd10b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840692462545:android:58532550a7fda9168a66f0",
+        "android_client_info": {
+          "package_name": "eu.aimless.f1predictor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840692462545-5mu0k997qf5m7cfh0e2hpp1s6vdt8hni.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC_NhuX8X6KMfk78k00oqXU2qnMAmQOC8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840692462545-5mu0k997qf5m7cfh0e2hpp1s6vdt8hni.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
