@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="eu.aimless.f1predictor.ui.dashboard.DashboardFragment"
+        android:name="eu.aimless.f1predictor.ui.races.RaceListFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_racelist" />
 
     <fragment
         android:id="@+id/navigation_notifications"

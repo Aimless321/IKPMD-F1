@@ -16,8 +16,6 @@ android:layout_height="match_parent">
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-
-    android:text="Deze tekst werkt."
     />
 
 <TextView
@@ -31,7 +29,6 @@ android:layout_height="match_parent">
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-
-    android:text="Deze text ook!"
     />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
