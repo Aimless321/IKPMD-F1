@@ -29,6 +29,7 @@ public class RaceListAdapter extends ArrayAdapter<Race> {
             convertView = li.inflate(R.layout.racelist_row, parent, false);
             vh.raceName = (TextView) convertView.findViewById(R.id.raceName);
             vh.round = (TextView) convertView.findViewById(R.id.round);
+            vh.date = (TextView) convertView.findViewById(R.id.date);
             convertView.setTag(vh);
         }
         else {
@@ -36,12 +37,14 @@ public class RaceListAdapter extends ArrayAdapter<Race> {
         }
         Race race = getItem(position);
         vh.raceName.setText(race.getRaceName());
-        vh.round.setText(String.valueOf(race.getRound())); //int moet String worden
+        vh.round.setText(String.valueOf(race.getRound()));
+        vh.date.setText(race.getDate());
         return convertView;
     }
 
     private static class ViewHolder {
         TextView raceName;
         TextView round;
+        TextView date;
     }
 }

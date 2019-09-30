@@ -42,8 +42,12 @@ public class RaceListFragment extends Fragment {
         );
 
         //DUMMY DATA
-        raceModels.add(new Race("25-7-2019", "Germany", 6, 2019, "14:10", "onbekende URL"));
-        raceModels.add(new Race("17-5-2019", "Australia", 1, 2019, "07:10", "onbekende URL"));
+        raceModels.add(new Race("26-5-2019", "Monaco", 6, 2019, "14:10", "onbekende URL"));
+        raceModels.add(new Race("12-5-2019", "Spain", 5, 2019, "15:10", "onbekende URL"));
+        raceModels.add(new Race("28-4-2019", "Azerbaijan", 4, 2019, "14:10", "onbekende URL"));
+        raceModels.add(new Race("14-4-2019", "China", 3, 2019, "09:10", "onbekende URL"));
+        raceModels.add(new Race("31-3-2019", "Bahrain", 2, 2019, "18:10", "onbekende URL"));
+        raceModels.add(new Race("17-3-2019", "Australia", 1, 2019, "06:10", "onbekende URL"));
 
         mAdapter = new RaceListAdapter(getContext(), 0, raceModels);
         mListView.setAdapter(mAdapter);
