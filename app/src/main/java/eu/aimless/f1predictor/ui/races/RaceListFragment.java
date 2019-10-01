@@ -37,6 +37,8 @@ public class RaceListFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
                 Toast t = Toast.makeText(getContext(), "Click" + position, Toast.LENGTH_LONG);
                 t.show();
+
+
             }
         }
         );
