@@ -7,42 +7,30 @@ android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/raceName"
-        android:layout_width="159dp"
+        android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="sans-serif-condensed-light"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_race_overview" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/round"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/raceName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_race_overview" />
-
-    <TextView
-        android:id="@+id/text_race_overview"
-        android:layout_width="376dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
-        android:fontFamily="sans-serif-condensed-light"
-        android:text="Race Overview"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,12 +38,12 @@ android:layout_height="match_parent">
         android:id="@+id/date"
         android:layout_width="95dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextTertairy"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/raceName"
-        app:layout_constraintTop_toBottomOf="@+id/text_race_overview" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/raceName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
