@@ -9,7 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import eu.aimless.f1predictor.repository.Firestore;
+import eu.aimless.f1predictor.repository.FirestoreHelper;
 
 public class NotificationsViewModel extends ViewModel {
 
@@ -18,7 +18,7 @@ public class NotificationsViewModel extends ViewModel {
     public NotificationsViewModel() {
         mText = new MutableLiveData<>();
 
-        new Firestore().getLatestRace().get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        new FirestoreHelper().getLatestRace().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()) {

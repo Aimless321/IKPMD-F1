@@ -8,11 +8,11 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.core.FirestoreClient;
 
-public class Firestore {
+public class FirestoreHelper {
 
     private FirebaseFirestore db;
 
-    public Firestore() {
+    public FirestoreHelper() {
         db = FirebaseFirestore.getInstance();
     }
 
