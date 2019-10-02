@@ -23,7 +23,8 @@ public class LoginViewModel extends ViewModel {
 
     public LoginViewModel() {
         firebaseAuth = FirebaseAuth.getInstance();
-        isLoggedIn = new MutableLiveData<>(false);
+        isLoggedIn = new MutableLiveData<>();
+        isLoggedIn.setValue(false);
         error = new MutableLiveData<>();
     }
 
@@ -46,7 +47,14 @@ public class LoginViewModel extends ViewModel {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()) {
                         //Sign-In success
-                        isLoggedIn.postValue(true);
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                        if(user.isEmailVerified()) {
+                            isLoggedIn.postValue(true);
+                        } else {
+                            error.postValue("Please verify your email");
+                        }
+
                     } else {
                         Log.w(TAG, "signInWithEmail:failure", task.getException());
                         error.postValue("Authentication Failed");

@@ -29,29 +29,23 @@
         android:inputType="textPassword"
         android:padding="20dp" />
 
+    <EditText
+        android:id="@+id/confirmPassword"
+        style="@style/AppTheme.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7.5dp"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:padding="20dp" />
+
     <Button
         android:id="@+id/loginButton"
         style="@style/AppTheme.RoundedCornerMaterialButton"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="7.5dp"
-        android:onClick="onLoginButtonPressed"
-        android:text="Login" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        app:srcCompat="@drawable/divider" />
-
-    <Button
-        android:id="@+id/registerButton"
-        style="@style/AppTheme.RoundedCornerMaterialButton"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7.5dp"
         android:onClick="onRegisterButtonPressed"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
         android:text="Register" />
 </LinearLayout>

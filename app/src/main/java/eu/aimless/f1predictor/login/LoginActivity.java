@@ -24,6 +24,7 @@ import java.util.List;
 
 import eu.aimless.f1predictor.MainActivity;
 import eu.aimless.f1predictor.R;
+import eu.aimless.f1predictor.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -80,6 +81,10 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         loginViewModel.validateLogin(email, password);
+    }
+
+    public void onRegisterButtonPressed(View view) {
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 
     private void resetInputBoxes() {
