@@ -1,5 +1,6 @@
 package eu.aimless.f1predictor.ui.races;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import eu.aimless.f1predictor.R;
 import eu.aimless.f1predictor.repository.model.Race;
+import eu.aimless.f1predictor.ui.raceDetails.RaceDetailActivity;
 
 public class RaceListFragment extends Fragment {
 
@@ -37,8 +39,7 @@ public class RaceListFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
                 Toast t = Toast.makeText(getContext(), "Click" + position, Toast.LENGTH_LONG);
                 t.show();
-
-
+                goToDetailScreen();
             }
         }
         );
@@ -55,5 +56,13 @@ public class RaceListFragment extends Fragment {
         mListView.setAdapter(mAdapter);
 
         return root;
+    }
+
+    private void goToDetailScreen(View view) {
+        Intent intent = new Intent(this, RaceDetailActivity.class);
+        Bundle b = new Bundle();
+        b.putInt("raceId", 2);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 }
