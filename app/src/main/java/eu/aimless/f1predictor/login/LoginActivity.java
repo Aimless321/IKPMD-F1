@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -39,10 +40,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+
+        if(loginViewModel.checkLoggedIn()) {
+            loadMainActivity();
+        }
+
         loginViewModel.getIsLoggedIn().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean value) {
-                if(value) {
+                if(loginViewModel.checkLoggedIn()) {
                     loadMainActivity();
                 }
             }
@@ -61,6 +67,14 @@ public class LoginActivity extends AppCompatActivity {
 
         emailBox = findViewById(R.id.userName);
         passwordBox = findViewById(R.id.password);
+
+        if(getIntent().getExtras() != null) {
+            Bundle bundle = getIntent().getExtras();
+            emailBox.setText(bundle.getString("email"));
+            passwordBox.setText(bundle.getString("password"));
+
+            Snackbar.make(findViewById(R.id.content), "Please verify your email", Snackbar.LENGTH_LONG).show();
+        }
     }
 
     public void onLoginButtonPressed(View view) {
