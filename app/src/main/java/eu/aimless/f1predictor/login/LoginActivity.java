@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
             loadMainActivity();
         }
 
-
         loginViewModel.getIsLoggedIn().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean value) {
