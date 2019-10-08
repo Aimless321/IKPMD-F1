@@ -39,12 +39,13 @@ public class RaceListFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
                 Toast t = Toast.makeText(getContext(), "Click" + position, Toast.LENGTH_LONG);
                 t.show();
-                goToDetailScreen();
+                goToDetailScreen(getView());
             }
         }
         );
 
         //DUMMY DATA
+        raceModels.add(new Race("09-6-2019", "Canada", 7, 2019, "06:10", "onbekende URL"));
         raceModels.add(new Race("26-5-2019", "Monaco", 6, 2019, "14:10", "onbekende URL"));
         raceModels.add(new Race("12-5-2019", "Spain", 5, 2019, "15:10", "onbekende URL"));
         raceModels.add(new Race("28-4-2019", "Azerbaijan", 4, 2019, "14:10", "onbekende URL"));
@@ -58,11 +59,21 @@ public class RaceListFragment extends Fragment {
         return root;
     }
 
+
     private void goToDetailScreen(View view) {
-        Intent intent = new Intent(this, RaceDetailActivity.class);
+        Intent intent = new Intent(getActivity(), RaceDetailActivity.class);
         Bundle b = new Bundle();
-        b.putInt("raceId", 2);
+
+        b.putInt("raceId", 7);
         intent.putExtras(b);
         startActivity(intent);
     }
+
+//    Race race = getItem(position);
+//        vh.raceName.setText(race.getRaceName());
+//        vh.round.setText(String.valueOf(race.getRound()));
+//        vh.date.setText(race.getDate());
+//        return convertView;
+
+
 }
