@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import eu.aimless.f1predictor.MainActivity;
 import eu.aimless.f1predictor.R;
+import eu.aimless.f1predictor.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -29,11 +30,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
 
-        registerViewModel.getIsLoggedIn().observe(this, new Observer<Boolean>() {
+        registerViewModel.getIsRegistered().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean value) {
                 if(value) {
-                    loadMainActivity();
+                    loadLoginActivity();
                 }
             }
         });
@@ -94,7 +95,15 @@ public class RegisterActivity extends AppCompatActivity {
         box.setBackgroundResource(R.drawable.background_textbox_error);
     }
 
-    private void loadMainActivity() {
-        startActivity(new Intent(this, MainActivity.class));
+    private void loadLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("email", email.getText().toString());
+        bundle.putString("password", password.getText().toString());
+
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 }

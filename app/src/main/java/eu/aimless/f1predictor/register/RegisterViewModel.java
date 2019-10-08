@@ -19,15 +19,15 @@ public class RegisterViewModel extends ViewModel {
 
     private FirebaseAuth firebaseAuth;
 
-    private MutableLiveData<Boolean> isLoggedIn;
+    private MutableLiveData<Boolean> isRegistered;
     private MutableLiveData<String> error;
     private MutableLiveData<String> mailStatus;
 
     public RegisterViewModel() {
         firebaseAuth = FirebaseAuth.getInstance();
 
-        isLoggedIn = new MutableLiveData<>();
-        isLoggedIn.setValue(false);
+        isRegistered = new MutableLiveData<>();
+        isRegistered.setValue(false);
         error = new MutableLiveData<>();
     }
 
@@ -40,19 +40,10 @@ public class RegisterViewModel extends ViewModel {
                         final FirebaseUser user = firebaseAuth.getCurrentUser();
 
                         if(!user.isEmailVerified()) {
-                            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()) {
-                                        mailStatus.postValue("Verification email sent to " + user.getEmail());
-                                    } else {
-                                        mailStatus.postValue("Failed to send verification email to " + user.getEmail());
-                                    }
-                                }
-                            });
+                            user.sendEmailVerification();
                         }
 
-                        isLoggedIn.postValue(true);
+                        isRegistered.postValue(true);
                     } else {
                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
                         error.postValue("Authentication Failed");
@@ -61,8 +52,8 @@ public class RegisterViewModel extends ViewModel {
             });
     }
 
-    public LiveData<Boolean> getIsLoggedIn() {
-        return isLoggedIn;
+    public LiveData<Boolean> getIsRegistered() {
+        return isRegistered;
     }
 
     public LiveData<String> getError() {
