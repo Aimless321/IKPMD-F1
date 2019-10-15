@@ -39,6 +39,9 @@ public class RaceListAdapter extends ArrayAdapter<Race> {
         vh.raceName.setText(race.getRaceName());
         vh.round.setText(String.valueOf(race.getRound()));
         vh.date.setText(race.getDate());
+
+        convertView.setId(Integer.valueOf(race.getRound()));
+
         return convertView;
     }
 

@@ -2,6 +2,7 @@ package eu.aimless.f1predictor.ui.races;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import eu.aimless.f1predictor.R;
+import eu.aimless.f1predictor.repository.FirestoreHelper;
 import eu.aimless.f1predictor.repository.model.Race;
 import eu.aimless.f1predictor.ui.raceDetails.RaceDetailActivity;
 
@@ -39,32 +46,50 @@ public class RaceListFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
                 Toast t = Toast.makeText(getContext(), "Click" + position, Toast.LENGTH_LONG);
                 t.show();
-                goToDetailScreen(getView());
+
+                goToDetailScreen((Race)mListView.getItemAtPosition(position));
             }
         }
         );
 
         //DUMMY DATA
-        raceModels.add(new Race("09-6-2019", "Canada", 7, 2019, "06:10", "onbekende URL"));
-        raceModels.add(new Race("26-5-2019", "Monaco", 6, 2019, "14:10", "onbekende URL"));
-        raceModels.add(new Race("12-5-2019", "Spain", 5, 2019, "15:10", "onbekende URL"));
-        raceModels.add(new Race("28-4-2019", "Azerbaijan", 4, 2019, "14:10", "onbekende URL"));
-        raceModels.add(new Race("14-4-2019", "China", 3, 2019, "09:10", "onbekende URL"));
-        raceModels.add(new Race("31-3-2019", "Bahrain", 2, 2019, "18:10", "onbekende URL"));
-        raceModels.add(new Race("17-3-2019", "Australia", 1, 2019, "06:10", "onbekende URL"));
+        FirestoreHelper firestore = new FirestoreHelper();
 
-        mAdapter = new RaceListAdapter(getContext(), 0, raceModels);
-        mListView.setAdapter(mAdapter);
+        firestore.getRaces().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()) {
+                    QuerySnapshot querySnapshot = task.getResult();
+
+                    for(DocumentSnapshot document : querySnapshot.getDocuments()) {
+                        Race race = document.toObject(Race.class);
+                        Log.d("RaceModels", race.getRaceName());
+                        raceModels.add(race);
+                    }
+
+                    mAdapter = new RaceListAdapter(getContext(), 0, raceModels);
+                    mListView.setAdapter(mAdapter);
+                }
+            }
+        });
+
+//        raceModels.add(new Race("09-6-2019", "Canada", 7, 2019, "06:10", "onbekende URL"));
+//        raceModels.add(new Race("26-5-2019", "Monaco", 6, 2019, "14:10", "onbekende URL"));
+//        raceModels.add(new Race("12-5-2019", "Spain", 5, 2019, "15:10", "onbekende URL"));
+//        raceModels.add(new Race("28-4-2019", "Azerbaijan", 4, 2019, "14:10", "onbekende URL"));
+//        raceModels.add(new Race("14-4-2019", "China", 3, 2019, "09:10", "onbekende URL"));
+//        raceModels.add(new Race("31-3-2019", "Bahrain", 2, 2019, "18:10", "onbekende URL"));
+//        raceModels.add(new Race("17-3-2019", "Australia", 1, 2019, "06:10", "onbekende URL"));
 
         return root;
     }
 
 
-    private void goToDetailScreen(View view) {
+    private void goToDetailScreen(Race race) {
         Intent intent = new Intent(getActivity(), RaceDetailActivity.class);
         Bundle b = new Bundle();
 
-        b.putInt("raceId", 7);
+        b.putInt("raceId", Integer.valueOf(race.getRound()));
         intent.putExtras(b);
         startActivity(intent);
     }
