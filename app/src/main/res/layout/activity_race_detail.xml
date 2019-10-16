@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.raceDetails.RaceDetailActivity">
+
+    <TextView
+        android:id="@+id/textViewRaceName"
+        android:layout_width="376dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:text="Race Name"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/horizontalBarOne"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorTextTertairy"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRaceName"
+        tools:layout_editor_absoluteX="-30dp" />
+
+    <TextView
+        android:id="@+id/textWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Winner"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRaceName" />
+
+    <TextView
+        android:id="@+id/textViewWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        android:text="Name of winner"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/logoWinner"
+        app:layout_constraintTop_toBottomOf="@+id/textWinner" />
+
+    <TextView
+        android:id="@+id/textPoleposition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Pole position"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWinner" />
+
+    <TextView
+        android:id="@+id/textViewPoleposition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        android:text="Name of pole"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/logoPole"
+        app:layout_constraintTop_toBottomOf="@+id/textPoleposition" />
+
+    <TextView
+        android:id="@+id/textFastestlap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Fastest lap"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPoleposition" />
+
+    <TextView
+        android:id="@+id/textViewFastestlap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        android:text="Name of FL"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/logoFastestlap"
+        app:layout_constraintTop_toBottomOf="@+id/textFastestlap" />
+
+    <ImageView
+        android:id="@+id/logoWinner"
+        android:layout_width="64px"
+        android:layout_height="64px"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textWinner"
+        app:srcCompat="@drawable/formulaone128" />
+
+    <ImageView
+        android:id="@+id/logoPole"
+        android:layout_width="64px"
+        android:layout_height="64px"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPoleposition"
+        app:srcCompat="@drawable/formulaone128" />
+
+    <ImageView
+        android:id="@+id/logoFastestlap"
+        android:layout_width="64px"
+        android:layout_height="64px"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFastestlap"
+        app:srcCompat="@drawable/formulaone128" />
+
+    <View
+        android:id="@+id/horizontalBarTwo"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorTextTertairy"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFastestlap"
+        tools:layout_editor_absoluteX="-30dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
