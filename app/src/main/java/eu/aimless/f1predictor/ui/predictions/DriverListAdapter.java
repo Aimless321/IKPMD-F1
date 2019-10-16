@@ -2,6 +2,7 @@ package eu.aimless.f1predictor.ui.predictions;
 
 import android.content.res.Resources;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,23 +18,25 @@ import org.json.JSONObject;
 import eu.aimless.f1predictor.R;
 
 public class DriverListAdapter extends RecyclerView.Adapter<DriverListAdapter.MyViewHolder> {
-    private PredictionsViewModel mViewModel;
+    private View.OnClickListener mClickListener;
     private JSONArray mDrivers;
     private Resources mResources;
 
      public static class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
         public TextView textView;
+        public TextView predictionText;
         public MyViewHolder(CardView v) {
             super(v);
             imageView = v.findViewById(R.id.driverImage);
             textView = v.findViewById(R.id.driverName);
+            predictionText = v.findViewById(R.id.predictionNum);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public DriverListAdapter(PredictionsViewModel viewModel, JSONArray drivers, Resources resources) {
-         mViewModel = viewModel;
+    public DriverListAdapter(View.OnClickListener listener, JSONArray drivers, Resources resources) {
+         mClickListener = listener;
          mDrivers = drivers;
          mResources = resources;
     }
@@ -48,7 +51,7 @@ public class DriverListAdapter extends RecyclerView.Adapter<DriverListAdapter.My
         ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
         marginParams.setMargins(5, 5, 5, 5);
 
-        v.setOnClickListener(mViewModel);
+        v.setOnClickListener(mClickListener);
 
         MyViewHolder vh = new MyViewHolder(v);
         return vh;

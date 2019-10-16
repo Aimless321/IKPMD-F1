@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
+    android:layout_width="85dp"
+    android:layout_height="85dp"
     android:layout_gravity="center"
     android:padding="100dp">
 
@@ -22,4 +22,16 @@
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/predictionNum"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#BF000000"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:visibility="invisible" />
 </androidx.cardview.widget.CardView>
