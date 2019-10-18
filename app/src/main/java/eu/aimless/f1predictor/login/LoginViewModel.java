@@ -31,13 +31,14 @@ public class LoginViewModel extends ViewModel {
     /**
      * Check if a user is logged in already
      */
-    public void checkLoggedIn() {
+    public boolean checkLoggedIn() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         if(user != null) {
-            isLoggedIn.postValue(true);
-            return;
+            return user.isEmailVerified();
         }
+
+        return false;
     }
 
     public void validateLogin(String email, String password) {
