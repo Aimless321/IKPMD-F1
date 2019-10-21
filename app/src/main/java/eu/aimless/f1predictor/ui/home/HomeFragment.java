@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
         });
 
         setupPieChart();
-        setData(0);
+        addData();
         setupButtonListener();
 
         return root;
@@ -68,6 +68,33 @@ public class HomeFragment extends Fragment {
         mChart.animateY(1400, Easing.EaseInOutQuad);
     }
 
+    private void addData() {
+        //ADDING DATA
+        List<PieEntry> entries = new ArrayList<>();
+
+        entries.add(new PieEntry(220, "mercedes"));
+        entries.add(new PieEntry(190, "ferrari"));
+        entries.add(new PieEntry(155, "red bull"));
+        entries.add(new PieEntry(60, "mclaren"));
+
+        PieDataSet dataset = new PieDataSet(entries, "Constructor points");
+
+        //ADDING COLORS
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.rgb(0, 230, 60)); //mercedes
+        colors.add(Color.rgb(250, 10, 10)); //ferrari
+        colors.add(Color.rgb(60, 0 , 245)); //redbull
+        colors.add(Color.rgb(170, 20, 20)); //mclaren
+
+        dataset.setColors(colors);
+
+        //FILLING CHART WITH DATA
+        PieData data = new PieData(dataset);
+        mChart.setData(data);
+        mChart.invalidate();
+    }
+
+    //oude data code
     private void setData(int aantal) {
         currentEcts = aantal;
         List<PieEntry> yValues = new ArrayList<>();

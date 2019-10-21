@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,9 @@ public class RaceDetailActivity extends AppCompatActivity {
     private TextView winnerText;
     private TextView poleText;
     private TextView fastestText;
+    private ImageView winnerLogo;
+    private ImageView poleLogo;
+    private ImageView fastestLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,45 @@ public class RaceDetailActivity extends AppCompatActivity {
             }
         });
 
+        putLogo(winnerLogo, "ferrari");
+        putLogo(poleLogo, "mercedes");
+        putLogo(fastestLogo, "renault");
+
+    }
+
+    private void putLogo(ImageView logo, String constructor) {
+        switch (constructor) {
+            case "ferrari":
+                logo.setImageResource(R.drawable.ferrari128);
+                break;
+            case "mercedes":
+                logo.setImageResource(R.drawable.mercedes128);
+                break;
+            case "red_bull":
+                logo.setImageResource(R.drawable.redbull128);
+                break;
+            case "renault":
+                logo.setImageResource(R.drawable.renault128);
+                break;
+            case "haas":
+                logo.setImageResource(R.drawable.haas128);
+                break;
+            case "mclaren":
+                logo.setImageResource(R.drawable.mclaren128);
+                break;
+            case "toro_rosso":
+                logo.setImageResource(R.drawable.torrorosso128);
+                break;
+            case "racing_point":
+                logo.setImageResource(R.drawable.racingpoint128);
+                break;
+            case "alfa":
+                logo.setImageResource(R.drawable.alfaromeo128);
+                break;
+            case "williams":
+                logo.setImageResource(R.drawable.williams128);
+                break;
+        }
     }
 
     private int findRaceid() {
@@ -66,6 +109,9 @@ public class RaceDetailActivity extends AppCompatActivity {
         winnerText =(TextView)findViewById(R.id.textViewWinner);
         poleText = (TextView)findViewById(R.id.textViewPoleposition);
         fastestText = (TextView)findViewById(R.id.textViewFastestlap);
+        winnerLogo = (ImageView)findViewById(R.id.logoWinner);
+        poleLogo = (ImageView)findViewById(R.id.logoPole);
+        fastestLogo = (ImageView)findViewById(R.id.logoFastestlap);
     }
 
 
