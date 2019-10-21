@@ -27,6 +27,7 @@ public class RaceDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_race_detail);
 
         final int raceid = findRaceid();
+        defineInformation();
 
         new FirestoreHelper().getRace(raceid).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -34,24 +35,30 @@ public class RaceDetailActivity extends AppCompatActivity {
                 if(task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
 
-                    String racename = document.getString("raceName");
-                    raceNameText.setText(racename);
+                    String raceName = document.getString("raceName");
+                    Log.d("The Value is:", ""+raceName+""); //Controle of er een waarde is gevonden
+
+                    raceNameText.setText(raceName);
+                }
+                else {
+                    raceNameText.setText("Not found"); //Controle of de task succesful is
                 }
             }
         });
 
-        defineInformation();
     }
 
     private int findRaceid() {
         Bundle b = getIntent().getExtras();
         if(b != null) {
             int value = b.getInt("raceId");
-            Log.d("Found this: ", ""+value+"");
+            Log.d("Found this: ", ""+value+""); //Controle of er een waarde is gevonden
 
             return value;
         }
-        return 0;
+        else {
+            return 0;
+        }
     }
 
     private void defineInformation() {
