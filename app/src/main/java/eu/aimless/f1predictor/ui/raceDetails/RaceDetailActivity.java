@@ -8,9 +8,17 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.utils.ObjectPool;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.w3c.dom.Document;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import eu.aimless.f1predictor.R;
 import eu.aimless.f1predictor.repository.FirestoreHelper;
@@ -29,6 +37,8 @@ public class RaceDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_race_detail);
+
+
 
         final int raceid = findRaceid();
         defineInformation();
@@ -50,44 +60,92 @@ public class RaceDetailActivity extends AppCompatActivity {
             }
         });
 
-        putLogo(winnerLogo, "ferrari");
-        putLogo(poleLogo, "mercedes");
-        putLogo(fastestLogo, "renault");
+        new FirestoreHelper().getPolePosition(raceid).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+
+                    Map<String, Object> data = document.getData();
+                    Map<String, Object> firstResult = ((List<Map<String, Object>>)data.get("QualifyingResults")).get(0);
+
+                    String poleName = ((Map<String, Object>)firstResult.get("Driver")).get("familyName").toString();
+                    String poleId = ((Map<String, Object>)firstResult.get("Driver")).get("driverId").toString();
+
+                    poleText.setText(poleName);
+                    putLogo(poleLogo, poleId);
+                }
+            }
+        });
+
+        new FirestoreHelper().getWinner(raceid).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+
+                    Map<String, Object> data = document.getData();
+                    Map<String, Object> firstResult = ((List<Map<String, Object>>)data.get("Results")).get(0);
+
+                    String winnerName = ((Map<String, Object>)firstResult.get("Driver")).get("familyName").toString();
+                    String winnerId = ((Map<String, Object>)firstResult.get("Driver")).get("driverId").toString();
+
+                    winnerText.setText(winnerName);
+                    putLogo(winnerLogo, winnerId);
+                }
+            }
+        });
+
+        putLogo(fastestLogo, "unknown");
 
     }
 
-    private void putLogo(ImageView logo, String constructor) {
-        switch (constructor) {
-            case "ferrari":
+    private void putLogo(ImageView logo, String driver) {
+        switch (driver) {
+            case "leclerc":
+            case "vettel":
                 logo.setImageResource(R.drawable.ferrari128);
                 break;
-            case "mercedes":
+            case "hamilton":
+            case "bottas":
                 logo.setImageResource(R.drawable.mercedes128);
                 break;
-            case "red_bull":
+            case "max_verstappen":
+            case "albon":
                 logo.setImageResource(R.drawable.redbull128);
                 break;
-            case "renault":
+            case "ricciardo":
+            case "rulkenberg":
                 logo.setImageResource(R.drawable.renault128);
                 break;
-            case "haas":
+            case "kevin_magnussen":
+            case "grosjean":
                 logo.setImageResource(R.drawable.haas128);
                 break;
-            case "mclaren":
+            case "sainz":
+            case "norris":
                 logo.setImageResource(R.drawable.mclaren128);
                 break;
-            case "toro_rosso":
+            case "kvyat":
+            case "gasly":
                 logo.setImageResource(R.drawable.torrorosso128);
                 break;
-            case "racing_point":
+            case "stroll":
+            case "perez":
                 logo.setImageResource(R.drawable.racingpoint128);
                 break;
-            case "alfa":
+            case "raikonnen":
+            case "giovinazzi":
                 logo.setImageResource(R.drawable.alfaromeo128);
                 break;
-            case "williams":
+            case "russel":
+            case "kubica":
                 logo.setImageResource(R.drawable.williams128);
                 break;
+            default:
+                logo.setImageResource(R.drawable.formulaone128);
         }
     }
 
