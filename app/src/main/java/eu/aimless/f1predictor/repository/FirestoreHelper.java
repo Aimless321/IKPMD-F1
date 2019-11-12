@@ -52,11 +52,23 @@ public class FirestoreHelper {
     }
   
     public Task<DocumentSnapshot> getRace(int id) {
-        return db.document("results/race/2019/" + id).get();
+        return db.document("data/races/2019/" + id).get();
     }
 
     public Task<QuerySnapshot> getRaces() {
         return db.collection("/data/races/2019")
-                .orderBy("round", Query.Direction.DESCENDING).get();
+                .orderBy("round", Query.Direction.ASCENDING).get();
+    }
+
+    public Task<DocumentSnapshot> getPolePosition(int id) {
+        return db.document("/results/qualifying/2019/" + id).get();
+    }
+
+    public Task<DocumentSnapshot> getWinner(int id) {
+        return db.document("/results/race/2019/" + id).get();
+    }
+
+    public Task<DocumentSnapshot> getConstructorPoints() {
+        return db.document("/points/constructors").get();
     }
 }
