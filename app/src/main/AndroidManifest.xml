@@ -12,6 +12,15 @@
 
         <activity android:name=".login.LoginActivity"
             android:label="Login">
+
+        </activity>
+
+        <activity
+            android:name=".ui.raceDetails.RaceDetailActivity"
+            android:label="@string/title_activity_race_detail"/>
+
+        <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,8 +28,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".MainActivity"/>
 
         <activity
             android:name=".register.RegisterActivity"/>

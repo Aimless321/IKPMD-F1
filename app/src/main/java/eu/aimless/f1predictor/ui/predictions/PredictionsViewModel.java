@@ -107,5 +107,4 @@ public class PredictionsViewModel extends ViewModel {
     public LiveData<ArrayList<String>> getPrediction() {
         return prediction;
     }
-
 }

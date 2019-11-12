@@ -33,6 +33,7 @@ import eu.aimless.f1predictor.repository.ApiRepository;
 public class PredictionsFragment extends Fragment implements View.OnClickListener {
 
     private View root;
+
     private PredictionsViewModel predictionsViewModel;
     private RecyclerView recyclerView;
 
@@ -45,6 +46,7 @@ public class PredictionsFragment extends Fragment implements View.OnClickListene
                              ViewGroup container, Bundle savedInstanceState) {
         predictionsViewModel =
                 ViewModelProviders.of(this).get(PredictionsViewModel.class);
+      
         root = inflater.inflate(R.layout.fragment_predictions, container, false);
 
         root.findViewById(R.id.saveButton).setOnClickListener(this::saveButtonPressed);
@@ -112,7 +114,6 @@ public class PredictionsFragment extends Fragment implements View.OnClickListene
                 })
                 .setNegativeButton("Cancel", null)
                 .show();
-
     }
 
     public void resetButtonPressed(View view) {
