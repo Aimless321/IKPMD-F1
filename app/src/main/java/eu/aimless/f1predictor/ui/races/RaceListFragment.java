@@ -44,9 +44,6 @@ public class RaceListFragment extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
-                Toast t = Toast.makeText(getContext(), "Click" + position, Toast.LENGTH_LONG);
-                t.show();
-
                 goToDetailScreen((Race)mListView.getItemAtPosition(position));
             }
         }
@@ -63,7 +60,9 @@ public class RaceListFragment extends Fragment {
                     for(DocumentSnapshot document : querySnapshot.getDocuments()) {
                         Race race = document.toObject(Race.class);
                         Log.d("RaceModels", race.getRaceName());
-                        raceModels.add(race);
+                        if(Integer.parseInt(race.getRound()) < 20) {
+                            raceModels.add(race);
+                        }
                     }
 
                     mAdapter = new RaceListAdapter(getContext(), 0, raceModels);
