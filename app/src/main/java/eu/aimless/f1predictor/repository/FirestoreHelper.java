@@ -43,4 +43,8 @@ public class FirestoreHelper {
     public Task<DocumentSnapshot> getWinner(int id) {
         return db.document("/results/race/2019/" + id).get();
     }
+
+    public Task<DocumentSnapshot> getConstructorPoints() {
+        return db.document("/points/constructors").get();
+    }
 }
