@@ -20,6 +20,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import eu.aimless.f1predictor.R;
@@ -64,6 +65,15 @@ public class RaceListFragment extends Fragment {
                             raceModels.add(race);
                         }
                     }
+
+                    raceModels.sort(new Comparator<Race>() {
+                        @Override
+                        public int compare(Race race, Race race1) {
+                            Integer round = Integer.valueOf(race.getRound());
+                            Integer round1 = Integer.valueOf(race1.getRound());
+                            return round.compareTo(round1);
+                        }
+                    });
 
                     mAdapter = new RaceListAdapter(getContext(), 0, raceModels);
                     mListView.setAdapter(mAdapter);
