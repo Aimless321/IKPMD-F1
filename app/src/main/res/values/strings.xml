@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">F1Predictor</string>
+    <string name="app_name">F1 Predictor</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Races</string>
