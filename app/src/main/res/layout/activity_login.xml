@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <EditText
+        android:id="@+id/userName"
+        style="@style/AppTheme.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="E-Mail"
+        android:inputType="textEmailAddress"
+        android:padding="20dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/AppTheme.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7.5dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="20dp" />
+
+    <Button
+        android:id="@+id/loginButton"
+        style="@style/AppTheme.RoundedCornerMaterialButton"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7.5dp"
+        android:onClick="onLoginButtonPressed"
+        android:text="Login" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        app:srcCompat="@drawable/divider" />
+
+    <Button
+        android:id="@+id/registerButton"
+        style="@style/AppTheme.RoundedCornerMaterialButton"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7.5dp"
+        android:onClick="onRegisterButtonPressed"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="Register" />
+</LinearLayout>

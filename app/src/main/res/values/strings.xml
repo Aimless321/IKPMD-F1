@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">F1Predictor</string>
+    <string name="app_name">F1 Predictor</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Races</string>
     <string name="title_notifications">Prediction</string>
+    <string name="title_activity_race_detail">Race Details</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

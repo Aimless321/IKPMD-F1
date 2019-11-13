@@ -9,15 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="eu.aimless.f1predictor.MainActivity"
-            android:label="@string/title_activity_main">
+
+        <activity android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+        <activity
+            android:name=".ui.raceDetails.RaceDetailActivity"
+            android:label="@string/title_activity_race_detail"/>
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".register.RegisterActivity"/>
     </application>
 
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
